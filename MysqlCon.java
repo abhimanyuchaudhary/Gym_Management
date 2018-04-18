@@ -252,7 +252,8 @@ public class MysqlCon extends Application{
                        stmt.executeUpdate(q);  
                     }
                     catch(Exception e){
-                        System.out.println(e);
+                        // System.out.println(e);
+                        showPopup(e.getMessage());
                         // showPopup("Incorrect values. Try again");
                     }
                     con.close(); 
@@ -309,7 +310,7 @@ public class MysqlCon extends Application{
                     try{
                        stmt.executeUpdate(q);  
                     }
-                    catch(Exception e){showPopup("Incorrect values. Try again");};
+                    catch(Exception e){showPopup(e.getMessage());};
                     con.close(); 
                 }
                 catch(Exception e){ System.out.println(e);}  
@@ -363,7 +364,7 @@ public class MysqlCon extends Application{
                     try{
                        stmt.executeUpdate(q);  
                     }
-                    catch(Exception e){showPopup("Incorrect values. Try again");};
+                    catch(Exception e){showPopup(e.getMessage());};
                     con.close(); 
                 }
                 catch(Exception e){ System.out.println(e);}  
@@ -412,7 +413,7 @@ public class MysqlCon extends Application{
                     try{
                        stmt.executeUpdate(q);  
                     }
-                    catch(Exception e){showPopup("Incorrect values. Try again");};
+                    catch(Exception e){showPopup(e.getMessage());};
                     con.close(); 
                 }
                 catch(Exception e){ System.out.println(e);}  
@@ -459,7 +460,7 @@ public class MysqlCon extends Application{
                     try{
                        stmt.executeUpdate(q);  
                     }
-                    catch(Exception e){showPopup("Incorrect values. Try again");};
+                    catch(Exception e){showPopup(e.getMessage());};
                     con.close(); 
                 }
                 catch(Exception e){ System.out.println(e);}  
@@ -638,7 +639,7 @@ public class MysqlCon extends Application{
         TextField KeyText = new TextField();
 
         Button btn = new Button();
-        btn.setText("Show Trainer");
+        btn.setText("Show");
 
         btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -665,8 +666,9 @@ public class MysqlCon extends Application{
                        displaySpecific(rs, TableValue);
                     }
                     catch(Exception e){
-                        System.out.println(e);
+                        // System.out.println(e);
                         // showPopup("Incorrect values. Try again");
+                        showPopup(e.getMessage());
                     }
                     con.close(); 
                 }
@@ -697,7 +699,7 @@ public class MysqlCon extends Application{
         TextField KeyText = new TextField();
 
         Button btn = new Button();
-        btn.setText("Show Trainer");
+        btn.setText("Delete");
 
         btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -722,7 +724,8 @@ public class MysqlCon extends Application{
                        stmt.executeUpdate(w);  
                     }
                     catch(Exception e){
-                        System.out.println(e);
+                        // System.out.println(e);
+                        showPopup(e.getMessage());
                         // showPopup("Incorrect values. Try again");
                     }
                     con.close(); 
@@ -778,7 +781,8 @@ public class MysqlCon extends Application{
 
                         }
                         catch(Exception e){
-                            System.out.println(e);
+                            // System.out.println(e);
+                            showPopup(e.getMessage());
                             // showPopup("Incorrect values. Try again");
                         }
                         con.close(); 
@@ -828,7 +832,8 @@ public class MysqlCon extends Application{
                            displaySpecificComplex(rs, type);
                         }
                         catch(Exception e){
-                            System.out.println(e);
+                            // System.out.println(e);
+                            showPopup(e.getMessage());
                             // showPopup("Incorrect values. Try again");
                         }
                         con.close(); 
@@ -1181,7 +1186,8 @@ public class MysqlCon extends Application{
                stmt.executeUpdate(employees);
             }
             catch(Exception e){
-                System.out.println(e);
+                // System.out.println(e);
+                showPopup(e.getMessage());
                 // showPopup("Incorrect values. Try again");
             }
             try{
@@ -1345,7 +1351,8 @@ public class MysqlCon extends Application{
 
                     }
                     catch(Exception e){
-                        System.out.println(e);
+                        // System.out.println(e);
+                        showPopup(e.getMessage());
                         // showPopup("Incorrect values. Try again");
                     }
                     con.close(); 
@@ -1372,7 +1379,8 @@ public class MysqlCon extends Application{
 
                     }
                     catch(Exception e){
-                        System.out.println(e);
+                        // System.out.println(e);
+                        showPopup(e.getMessage());
                         // showPopup("Incorrect values. Try again");
                     }
                     con.close(); 
