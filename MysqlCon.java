@@ -49,6 +49,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.cell.PropertyValueFactory;
 public class MysqlCon extends Application{  
     final int maxrows = 10;
+    final String db_password = "q";
     public static class Person {
         private final SimpleStringProperty firstName;
         private final SimpleStringProperty lastName;
@@ -237,7 +238,7 @@ public class MysqlCon extends Application{
                 try{  
                     Class.forName("com.mysql.jdbc.Driver");  
                     Connection con=DriverManager.getConnection(  
-                    "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root","0");  
+                    "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root",db_password);  
                     //here sonoo is database name, root is username and password  
                     Statement stmt=con.createStatement(); 
                     String idvalue = idText.getText(); 
@@ -296,7 +297,7 @@ public class MysqlCon extends Application{
                 try{  
                     Class.forName("com.mysql.jdbc.Driver");  
                     Connection con=DriverManager.getConnection(  
-                    "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root","0");  
+                    "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root",db_password);  
                     //here sonoo is database name, root is username and password  
                     Statement stmt=con.createStatement(); 
                     String idvalue = idText.getText(); 
@@ -350,7 +351,7 @@ public class MysqlCon extends Application{
                 try{  
                     Class.forName("com.mysql.jdbc.Driver");  
                     Connection con=DriverManager.getConnection(  
-                    "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root","0");  
+                    "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root",db_password);  
                     //here sonoo is database name, root is username and password  
                     Statement stmt=con.createStatement(); 
                     String idvalue = idText.getText(); 
@@ -401,7 +402,7 @@ public class MysqlCon extends Application{
                 try{  
                     Class.forName("com.mysql.jdbc.Driver");  
                     Connection con=DriverManager.getConnection(  
-                    "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root","0");  
+                    "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root",db_password);  
                     //here sonoo is database name, root is username and password  
                     Statement stmt=con.createStatement(); 
                     String Namevalue = NameText.getText(); 
@@ -448,7 +449,7 @@ public class MysqlCon extends Application{
                 try{  
                     Class.forName("com.mysql.jdbc.Driver");  
                     Connection con=DriverManager.getConnection(  
-                    "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root","0");  
+                    "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root",db_password);  
                     //here sonoo is database name, root is username and password  
                     Statement stmt=con.createStatement(); 
                     String Emp_idvalue = Emp_idText.getText(); 
@@ -645,7 +646,7 @@ public class MysqlCon extends Application{
                 try{  
                     Class.forName("com.mysql.jdbc.Driver");  
                     Connection con=DriverManager.getConnection(  
-                    "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root","0");  
+                    "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root",db_password);  
                     //here sonoo is database name, root is username and password  
                     Statement stmt=con.createStatement(); 
                     String KeyValue = KeyText.getText(); 
@@ -704,7 +705,7 @@ public class MysqlCon extends Application{
                 try{  
                     Class.forName("com.mysql.jdbc.Driver");  
                     Connection con=DriverManager.getConnection(  
-                    "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root","0");  
+                    "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root",db_password);  
                     //here sonoo is database name, root is username and password  
                     Statement stmt=con.createStatement(); 
                     String KeyValue = KeyText.getText(); 
@@ -760,7 +761,7 @@ public class MysqlCon extends Application{
                     try{  
                         Class.forName("com.mysql.jdbc.Driver");  
                         Connection con=DriverManager.getConnection(  
-                        "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root","0");  
+                        "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root",db_password);  
                         //here sonoo is database name, root is username and password  
                         Statement stmt=con.createStatement(); 
                         String xValue = xText.getText(); 
@@ -806,7 +807,7 @@ public class MysqlCon extends Application{
                     try{  
                         Class.forName("com.mysql.jdbc.Driver");  
                         Connection con=DriverManager.getConnection(  
-                        "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root","0");  
+                        "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root",db_password);  
                         //here sonoo is database name, root is username and password  
                         Statement stmt=con.createStatement(); 
                         String xValue = xText.getText(); 
@@ -819,7 +820,7 @@ public class MysqlCon extends Application{
                         }
                         else if(type == 3){
                             w = "Select id, Name, Specialization, Salary FROM Trainers, Employees WHERE Emp_id = id AND Specialization " +
-                                " = " +xValue+" AND Salary >= " + yValue +";";
+                                "= " +xValue+" AND Salary >= " + yValue +";";
                         }
                         try{
                            rs = stmt.executeQuery(w);  
@@ -1137,7 +1138,7 @@ public class MysqlCon extends Application{
         try{  
             Class.forName("com.mysql.jdbc.Driver");  
             Connection con=DriverManager.getConnection(  
-            "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root","0");  
+            "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root",db_password);  
             //here sonoo is database name, root is username and password  
             Statement stmt=con.createStatement(); 
 
@@ -1331,7 +1332,7 @@ public class MysqlCon extends Application{
                 try{  
                     Class.forName("com.mysql.jdbc.Driver");  
                     Connection con=DriverManager.getConnection(  
-                    "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root","0");  
+                    "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root",db_password);  
                     //here sonoo is database name, root is username and password  
                     Statement stmt=con.createStatement(); 
                     String w;
@@ -1358,7 +1359,7 @@ public class MysqlCon extends Application{
                 try{  
                     Class.forName("com.mysql.jdbc.Driver");  
                     Connection con=DriverManager.getConnection(  
-                    "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root","0");  
+                    "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root",db_password);  
                     //here sonoo is database name, root is username and password  
                     Statement stmt=con.createStatement(); 
                     String w;
