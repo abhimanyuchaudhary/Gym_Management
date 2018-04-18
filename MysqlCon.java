@@ -49,7 +49,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.cell.PropertyValueFactory;
 public class MysqlCon extends Application{  
     final int maxrows = 10;
-    final String db_password = "q";
+    final String db_password = "0";
     public static class Person {
         private final SimpleStringProperty firstName;
         private final SimpleStringProperty lastName;
@@ -658,7 +658,7 @@ public class MysqlCon extends Application{
                         PrKey = "Name";
                     else 
                         PrKey = "id";
-                    String w = "SELECT * FROM " +  TableValue + " WHERE " +  PrKey  + " = "  +  KeyValue + ";";
+                    String w = "SELECT * FROM " +  TableValue + " WHERE " +  PrKey  + " = '"  +  KeyValue + "';";
                     ResultSet rs;
                     try{
                        rs = stmt.executeQuery(w);  
@@ -717,7 +717,7 @@ public class MysqlCon extends Application{
                         PrKey = "Name";
                     else 
                         PrKey = "id";
-                    String w = "DELETE FROM " +  TableValue + " WHERE " +  PrKey  + " = "  +  KeyValue + ";";
+                    String w = "DELETE FROM " +  TableValue + " WHERE " +  PrKey  + " = '"  +  KeyValue + "';";
                     try{
                        stmt.executeUpdate(w);  
                     }
@@ -769,7 +769,7 @@ public class MysqlCon extends Application{
                         ResultSet rs;
                         if(type == 2){
                             w = "SELECT * FROM Members WHERE Members.id NOT IN (SELECT Members.id FROM Members, Payments WHERE Members.id = "+
-                                "Member_id AND Date_Paid >= " + xValue + ");";
+                                "Member_id AND Date_Paid >= '" + xValue + "');";
 
                         }
                         try{
@@ -816,11 +816,11 @@ public class MysqlCon extends Application{
                         ResultSet rs;
                         if(type == 1){
                             w = "SELECT id, Members.Name, Date_Joined, Cost as Tier_Cost FROM Members, Tiers WHERE Tier_Name = "+
-                                "Tiers.Name AND Tier_Cost >= " +yValue+ "AND Date_Joined >= " + xValue +";";
+                                "Tiers.Name AND Cost >= " +yValue+ "AND Date_Joined >= '" + xValue +"';";
                         }
                         else if(type == 3){
                             w = "Select id, Name, Specialization, Salary FROM Trainers, Employees WHERE Emp_id = id AND Specialization " +
-                                "= " +xValue+" AND Salary >= " + yValue +";";
+                                " = '" +xValue+"' AND Salary >= " + yValue +";";
                         }
                         try{
                            rs = stmt.executeQuery(w);  
@@ -863,57 +863,57 @@ public class MysqlCon extends Application{
         window.setScene(scene);
         window.show();
     }
-    public void displayDefaultWithPages(ResultSet rs) {
-        Stage window = new Stage();
-        window.initModality(Modality.APPLICATION_MODAL);
-        window.setTitle("Result");
-        window.setMinWidth(300);
-        window.setMinHeight(275);
+    // public void displayDefaultWithPages(ResultSet rs) {
+    //     Stage window = new Stage();
+    //     window.initModality(Modality.APPLICATION_MODAL);
+    //     window.setTitle("Result");
+    //     window.setMinWidth(300);
+    //     window.setMinHeight(275);
         
-        TableView<Person> table = new TableView<>();
-        table.setMaxHeight(275);
-        TableColumn firstNameCol = new TableColumn("First Name");
-        // firstNameCol.setMinWidth(100);
-        firstNameCol.setCellValueFactory(
-                new PropertyValueFactory<>("firstName"));
+    //     TableView<Person> table = new TableView<>();
+    //     table.setMaxHeight(275);
+    //     TableColumn firstNameCol = new TableColumn("First Name");
+    //     // firstNameCol.setMinWidth(100);
+    //     firstNameCol.setCellValueFactory(
+    //             new PropertyValueFactory<>("firstName"));
  
-        TableColumn lastNameCol = new TableColumn("Last Name");
-        // lastNameCol.setMinWidth(100);
-        lastNameCol.setCellValueFactory(
-                new PropertyValueFactory<>("lastName"));
+    //     TableColumn lastNameCol = new TableColumn("Last Name");
+    //     // lastNameCol.setMinWidth(100);
+    //     lastNameCol.setCellValueFactory(
+    //             new PropertyValueFactory<>("lastName"));
         
-        table.getColumns().addAll(firstNameCol, lastNameCol);
+    //     table.getColumns().addAll(firstNameCol, lastNameCol);
 
-        Button Nextbtn = new Button();
-        Nextbtn.setText("Next");
-        Nextbtn.setOnAction(event -> {
-            for(int i = 0; i < maxrows; i++){
-                if(table.getItems().size() == 0)
-                    break;
-                Person selectedItem = table.getItems().get(0);
-                table.getItems().remove(selectedItem);
+    //     Button Nextbtn = new Button();
+    //     Nextbtn.setText("Next");
+    //     Nextbtn.setOnAction(event -> {
+    //         for(int i = 0; i < maxrows; i++){
+    //             if(table.getItems().size() == 0)
+    //                 break;
+    //             Person selectedItem = table.getItems().get(0);
+    //             table.getItems().remove(selectedItem);
 
-            }
-        });
+    //         }
+    //     });
         
-        try{
-            while(rs.next()) {
-                table.getItems().add(new Person(rs.getString(1), rs.getString(2)));
-            }
-        }
-        catch(Exception e){ System.out.println(e);} 
+    //     try{
+    //         while(rs.next()) {
+    //             table.getItems().add(new Person(rs.getString(1), rs.getString(2)));
+    //         }
+    //     }
+    //     catch(Exception e){ System.out.println(e);} 
 
 
 
-        VBox root = new VBox(table);
-        root.getChildren().add(Nextbtn);
-        root.setAlignment(Pos.CENTER);
-        Scene scene = new Scene(root);
+    //     VBox root = new VBox(table);
+    //     root.getChildren().add(Nextbtn);
+    //     root.setAlignment(Pos.CENTER);
+    //     Scene scene = new Scene(root);
 
 
-        window.setScene(scene);
-        window.show();
-    }
+    //     window.setScene(scene);
+    //     window.show();
+    // }
     public void displaySpecificComplex(ResultSet rs, int type) {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
