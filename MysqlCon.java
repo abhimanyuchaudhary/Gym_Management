@@ -816,7 +816,8 @@ public class MysqlCon extends Application{
                         ResultSet rs;
                         if(type == 1){
                             w = "SELECT id, Members.Name, Date_Joined, Cost as Tier_Cost FROM Members, Tiers WHERE Tier_Name = "+
-                                "Tiers.Name AND Cost >= " +yValue+ "AND Date_Joined >= '" + xValue +"';";
+                                "Tiers.Name AND Cost >= " +yValue+ " AND Date_Joined >= '" + xValue +"';";
+                                System.out.println(w);
                         }
                         else if(type == 3){
                             w = "Select id, Name, Specialization, Salary FROM Trainers, Employees WHERE Emp_id = id AND Specialization " +
@@ -1292,7 +1293,7 @@ public class MysqlCon extends Application{
         });
 
         //------//
-        Button btnC1 = new Button("btnC1");
+        Button btnC1 = new Button("Get all members who have been members since X and are paying more than Y");
         btnC1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -1303,7 +1304,7 @@ public class MysqlCon extends Application{
             }
         });
 
-        Button btnC2= new Button("btnC2");
+        Button btnC2= new Button("Get all members who haven't paid since X");
         btnC2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -1314,7 +1315,7 @@ public class MysqlCon extends Application{
             }
         });
 
-        Button btnC3 = new Button("btnC3");
+        Button btnC3 = new Button("Get trainers who specialize in X and have salary >= Y");
         btnC3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -1325,7 +1326,7 @@ public class MysqlCon extends Application{
             }
         });
 
-        Button btnC4 = new Button("btnC4");
+        Button btnC4 = new Button("Get the average salary for each trainer specialization");
         btnC4.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -1352,7 +1353,7 @@ public class MysqlCon extends Application{
                 catch(Exception e){ System.out.println(e);}             }
         });
 
-        Button btnC5 = new Button("btnC5");
+        Button btnC5 = new Button("Show the number of members in each tier");
         btnC5.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
