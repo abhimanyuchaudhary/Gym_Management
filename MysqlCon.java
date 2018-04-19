@@ -1186,8 +1186,8 @@ public class MysqlCon extends Application{
                stmt.executeUpdate(employees);
             }
             catch(Exception e){
-                // System.out.println(e);
-                showPopup(e.getMessage());
+                System.out.println(e);
+                // showPopup(e.getMessage());
                 // showPopup("Incorrect values. Try again");
             }
             try{
@@ -1299,7 +1299,7 @@ public class MysqlCon extends Application{
         });
 
         //------//
-        Button btnC1 = new Button("Get all members who have been members since X and are paying more than Y");
+        Button btnC1 = new Button("All members since X who are paying more than Y");
         btnC1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -1310,7 +1310,7 @@ public class MysqlCon extends Application{
             }
         });
 
-        Button btnC2= new Button("Get all members who haven't paid since X");
+        Button btnC2= new Button("Members who haven't paid since X");
         btnC2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -1321,7 +1321,7 @@ public class MysqlCon extends Application{
             }
         });
 
-        Button btnC3 = new Button("Get trainers who specialize in X and have salary >= Y");
+        Button btnC3 = new Button("Trainers specializing in X and have salary >= Y");
         btnC3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -1388,12 +1388,21 @@ public class MysqlCon extends Application{
                 catch(Exception e){ System.out.println(e);} 
             }
         });
-        FlowPane te = new FlowPane();
-        te.getChildren().addAll(btnAddMember, btnAddEmployee, btnAddPayment, btnAddTrainer, btnAddTier,
-                                    btnShowX, btnDeleteX, btnC1, btnC2, btnC3, btnC4, btnC5);
-
+        VBox te = new VBox();
+        
+        FlowPane add = new FlowPane();
+        add.getChildren().addAll(btnAddMember, btnAddEmployee, btnAddPayment, btnAddTrainer, btnAddTier);
+        FlowPane small = new FlowPane();
+        small.getChildren().addAll(btnShowX, btnDeleteX);
+        te.getChildren().addAll(btnC1, btnC2, btnC3, btnC4, btnC5);
+        MainLabel.setTranslateX(350);
+        add.setTranslateX(250);
+        small.setTranslateX(400);
         VBox root = new VBox();
-        root.getChildren().addAll(MainLabel, te);
+        te.setTranslateX(300);
+        te.setSpacing(10);
+        root.setSpacing(10);
+        root.getChildren().addAll(MainLabel, add, small, te);
         primaryStage.setScene(new Scene(root, 1000, 400));
         primaryStage.show();
     }
