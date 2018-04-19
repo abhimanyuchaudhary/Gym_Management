@@ -1144,9 +1144,14 @@ public class MysqlCon_2016003_2016040 extends Application{
         try{  
             Class.forName("com.mysql.jdbc.Driver");  
             Connection con=DriverManager.getConnection(  
-            "jdbc:mysql://localhost:3306/sonoo?useSSL=false","root",db_password);  
+            "jdbc:mysql://localhost:3306","root",db_password);  
             //here sonoo is database name, root is username and password  
             Statement stmt=con.createStatement(); 
+            String create_database = "CREATE DATABASE sonoo;";
+            stmt.executeUpdate(create_database);
+            String usedb = "USE sonoo;";
+            stmt.executeUpdate(usedb);
+
 
             String members = "CREATE TABLE IF NOT EXISTS Members ("+
                             "id varchar(10)," + 
