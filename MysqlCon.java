@@ -1148,7 +1148,7 @@ public class MysqlCon extends Application{
             //here sonoo is database name, root is username and password  
             Statement stmt=con.createStatement(); 
 
-            String members = "CREATE TABLE Members ("+
+            String members = "CREATE TABLE IF NOT EXISTS Members ("+
                             "id varchar(10)," + 
                             "Name varchar(40),"+ 
                             "Date_Joined Date," +  
@@ -1157,27 +1157,30 @@ public class MysqlCon extends Application{
                              "PRIMARY KEY(id)," + 
                              "FOREIGN KEY(Tier_Name) REFERENCES Tiers(Name)," +
                              "FOREIGN Key(Trainer_id) REFERENCES Trainers(Emp_id));" ;
-            String tiers = "CREATE TABLE Tiers (" +
+            String tiers = "CREATE TABLE IF NOT EXISTS Tiers (" +
                                 "Name varchar(40)," +
                                 "Cost int," +
+                                "CHECK(Cost > 0),"+
                                 "PRIMARY KEY(Name)"+
                                 ");";
-            String employees = "CREATE TABLE Employees("+
+            String employees = "CREATE TABLE IF NOT EXISTS Employees("+
                                 "id varchar(20),"+
                                 "Name varchar(20),"+
                                 "Date_Joined Date,"+
                                 "Salary Int,"+
-                                "PRIMARY KEY(id)"+
+                                "PRIMARY KEY(id),"+
+                                "CHECK(Salary > 0)"+
                                 ");";
-            String payments = "CREATE TABLE Payments("+
+            String payments = "CREATE TABLE IF NOT EXISTS Payments("+
                                 "id varchar(20),"+
                                 "Date_Paid Date,"+
                                 "Member_id varchar(20),"+
                                 "Amount int,"+
                                 "PRIMARY KEY(id),"+
-                                "FOREIGN KEY(Member_id) REFERENCES Members(id)"+
+                                "FOREIGN KEY(Member_id) REFERENCES Members(id),"+
+                                "CHECK(Amount > 0)"+
                                 ");";
-            String trainers = "CREATE TABLE Trainers (" +
+            String trainers = "CREATE TABLE IF NOT EXISTS Trainers (" +
                                 "Emp_id varchar(20),"+
                                 "Specialization varchar(20),"+
                                 "PRIMARY KEY(Emp_id),"+
