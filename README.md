@@ -1,1 +1,1 @@
-Gym Management System (code is obfuscated)
+Gym Management System (code is obfuscated).
